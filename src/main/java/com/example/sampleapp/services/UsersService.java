@@ -1,6 +1,10 @@
 package com.example.sampleapp.services;
 
+import com.example.sampleapp.entity.JobSeekerProfile;
+import com.example.sampleapp.entity.RecruiterProfile;
 import com.example.sampleapp.entity.Users;
+import com.example.sampleapp.repository.JobSeekerProfileRepository;
+import com.example.sampleapp.repository.RecruiterProfileRepository;
 import com.example.sampleapp.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,16 +16,28 @@ import java.util.Optional;
 public class UsersService {
 
     private final UsersRepository usersRepository;
+    private final JobSeekerProfileRepository jobSeekerProfileRepository;
+    private final RecruiterProfileRepository recruiterProfileRepository;
 
     @Autowired
-    public UsersService(UsersRepository usersRepository) {
+    public UsersService(UsersRepository usersRepository, JobSeekerProfileRepository jobSeekerProfileRepository, RecruiterProfileRepository recruiterProfileRepository) {
         this.usersRepository = usersRepository;
+        this.jobSeekerProfileRepository = jobSeekerProfileRepository;
+        this.recruiterProfileRepository = recruiterProfileRepository;
     }
 
     public Users addNew(Users users){
         users.setActive(true);
         users.setRegistrationDate(new Date(System.currentTimeMillis()));
-        return usersRepository.save(users);
+        Users savedUser = usersRepository.save(users);
+        int userTypeId = savedUser.getUserTypeId().getUserTypeId();
+        if(userTypeId == 1) {
+            recruiterProfileRepository.save(new RecruiterProfile(savedUser));
+        } else if(userTypeId == 2) {
+            jobSeekerProfileRepository.save(new JobSeekerProfile(savedUser));
+        }
+
+        return savedUser;
     }
 
     public Optional<Users> getUserByEmail(String email){
