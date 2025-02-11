@@ -6,12 +6,16 @@
 The Job Portal Application is a web-based platform that allows job seekers to search and apply for job openings, while employers can post and manage job listings. The application is built using Spring Boot for the backend, Thymeleaf for server-side rendering of views, and PostgreSQL as the database.
 
 ## Features
-### For Job Seekers
+
+### Account Registration
+Users can register for a Recruiter or Job Seeker account. Configured to allow registered users into the application
+
+### Job Seekers Portal
 Register and create a Job Seeker profile.
 Browse and search for jobs by category, location, or keywords.
 Apply for jobs and track application status.
 Save favorite job postings.
-### For Recruiters
+### Recruiters Portal
 Register and create a Recruiter profile.
 Post new job openings with details like role, location, and salary.
 View applications and manage job postings.
