@@ -3,6 +3,8 @@
 ## Overview
 The Job Portal Application is a web-based platform that allows job seekers to search and apply for job openings, while employers can post and manage job listings. The application is built using Spring Boot for the backend, Thymeleaf for server-side rendering of views, and PostgreSQL as the database.
 
+![](https://github.com/procha159/job-portal/blob/main/readme-resources/Job-App.gif)
+
 ## Features
 ### For Job Seekers
 Register and create a profile.
