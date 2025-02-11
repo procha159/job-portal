@@ -12,7 +12,7 @@ INSERT INTO users_type VALUES (1,'Recruiter'),(2,'Job Seeker');
 CREATE TABLE users (
   user_id SERIAL PRIMARY KEY,
   email varchar(255) DEFAULT NULL UNIQUE,
-  is_active bit(1) DEFAULT NULL,
+  is_active BOOLEAN DEFAULT NULL,
   password varchar(255) DEFAULT NULL,
   registration_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   user_type_id int DEFAULT NULL,
