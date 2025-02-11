@@ -9,7 +9,7 @@ Register and create a profile.
 Browse and search for jobs by category, location, or keywords.
 Apply for jobs and track application status.
 Save favorite job postings.
-### For Employers
+### For Recruiters
 Register and create a company profile.
 Post new job openings with details like role, location, and salary.
 View applications and manage job postings.
