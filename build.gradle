@@ -30,10 +30,29 @@ dependencies {
     implementation 'org.webjars:font-awesome:3.1.1-1'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'org.postgresql:postgresql'
+
+    testImplementation("org.testcontainers:testcontainers:1.19.3")
+    testImplementation("org.testcontainers:junit-jupiter:1.19.3")
+    testImplementation("org.testcontainers:postgresql:1.19.3")
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation("org.springframework.boot:spring-boot-testcontainers")
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 }
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+
+sourceSets {
+    test {
+        java {
+            srcDirs = ['src/test']
+        }
+        resources {
+            srcDirs = ['src/test/resources']
+        }
+    }
 }
