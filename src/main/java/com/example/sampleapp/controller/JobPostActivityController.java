@@ -2,6 +2,7 @@ package com.example.sampleapp.controller;
 
 import com.example.sampleapp.entity.JobPostActivity;
 import com.example.sampleapp.entity.Users;
+import com.example.sampleapp.services.JobPostActivityService;
 import com.example.sampleapp.services.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -18,10 +19,12 @@ import java.util.Date;
 public class JobPostActivityController {
 
     private final UsersService usersService;
+    private final JobPostActivityService jobPostActivityService;
 
     @Autowired
-    public JobPostActivityController(UsersService usersService) {
+    public JobPostActivityController(UsersService usersService, JobPostActivityService jobPostActivityService) {
         this.usersService = usersService;
+        this.jobPostActivityService = jobPostActivityService;
     }
 
 
@@ -54,6 +57,8 @@ public class JobPostActivityController {
         }
         jobPostActivity.setPostedDate(new Date());
         model.addAttribute("jobPostActivity", jobPostActivity);
+        JobPostActivity saved = jobPostActivityService.addNew(jobPostActivity);
+
         return "redirect:/dashboard/";
     }
 }
