@@ -18,7 +18,7 @@ public class JobPostActivity {
     private Users postedById;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "job_location_id_id", referencedColumnName = "Id")
+    @JoinColumn(name = "job_location_id", referencedColumnName = "Id")
     private JobLocation jobLocationId;
 
     @ManyToOne(cascade = CascadeType.ALL)
